@@ -1,0 +1,21 @@
+# Lucas Milhorança
+
+> Site pessoal de Lucas Milhorança, desenvolvedor full stack brasileiro. Backend em PHP/Laravel, Node.js, Java e C#, frontend em React, infraestrutura em AWS e Oracle Cloud. Disponível para novos projetos.
+
+## Páginas
+
+- [Português](https://lucasmilhoranca.dev/): página principal, idioma padrão do site.
+- [English](https://lucasmilhoranca.dev/en/): same content, in English.
+
+## Sobre
+
+Desenvolvedor full stack com experiência concentrada em sistemas de pagamento — checkout, conciliação financeira, PIX, segurança de dados de cartão — mas também já trabalhou com ERPs, microsserviços e ferramentas internas. Atualmente Desenvolvedor Full Stack Pleno na iPag Pagamentos Digitais (Presidente Prudente, SP, Brasil). Passagens anteriores por Nimbus Sistemas e Gasparim.
+
+Stack principal: PHP (Laravel, Slim), Node.js (Fastify, NestJS, Express), C#/.NET, Java/Spring Boot, React/Next.js, MySQL, PostgreSQL, Redis, AWS, Docker.
+
+## Contato
+
+- E-mail (PT): contato@lucasmilhoranca.dev
+- E-mail (EN): contact@lucasmilhoranca.dev
+- GitHub: https://github.com/lucasmilhoranca
+- LinkedIn: https://www.linkedin.com/in/lucas-milhoranca
