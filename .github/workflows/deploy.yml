@@ -1,0 +1,61 @@
+name: Deploy
+
+# Push-only, on purpose. The `deploy` job below runs on a self-hosted runner
+# (your VPS, with kubectl access to k3s). Self-hosted runners must NEVER be
+# used with a `pull_request` trigger on a public repo — anyone could open a
+# PR and get their workflow code executed on your VPS. `push` to a specific
+# branch is safe because only people with write access to this repo can push
+# to it in the first place.
+on:
+  push:
+    branches:
+      - release/production
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/${{ github.repository }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Apply manifests
+        run: kubectl apply -f k8s/
+
+      - name: Roll out new image
+        run: |
+          kubectl set image deployment/lucasmilhoranca-dev \
+            web=ghcr.io/${{ github.repository }}:${{ github.sha }} \
+            -n lucasmilhoranca-dev
+          kubectl rollout status deployment/lucasmilhoranca-dev \
+            -n lucasmilhoranca-dev --timeout=120s
