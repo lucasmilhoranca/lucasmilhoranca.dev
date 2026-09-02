@@ -13,6 +13,7 @@ Deliberately minimal: static HTML + Tailwind, a little TypeScript for progressiv
 ```
 index.html          # Portuguese page (/) — default language
 en/index.html        # English page (/en/)
+404.html              # error page — registered as a Vite build entry (vite.config.ts), served via nginx's error_page directive (nginx.conf), not routing/JS
 src/main.ts           # theme toggle, mobile menu, footer year — no CSS import
 src/style.css          # Tailwind theme, @font-face, shared component classes
 public/fonts/           # self-hosted JetBrains Mono (.woff2, latin subset)

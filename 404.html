@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Lucas Milhorança</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#0a0a09" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/style.css" />
+
+    <script>
+      ;(function () {
+        if (localStorage.getItem('theme') !== 'light') {
+          document.documentElement.classList.add('dark')
+        }
+      })()
+    </script>
+  </head>
+  <body class="bg-cream text-ink selection:bg-accent selection:text-cream dark:bg-void dark:text-fog">
+    <main class="mx-auto flex min-h-dvh max-w-3xl flex-col justify-center px-5 sm:px-6">
+      <p class="animate-fade-up text-xs uppercase tracking-[0.25em] text-accent">Erro 404</p>
+      <h1 class="animate-fade-up mt-3 text-4xl font-bold tracking-tight sm:text-5xl [animation-delay:80ms]">
+        Essa página não existe<span class="cursor"></span>
+      </h1>
+
+      <div class="animate-fade-up mt-6 max-w-md rounded-lg border border-ink/10 bg-ink/[0.03] px-4 py-3 text-sm leading-relaxed dark:border-fog/10 dark:bg-fog/[0.03] [animation-delay:140ms]">
+        <p class="text-ink/70 dark:text-fog/70">$ cat essa-página</p>
+        <p class="text-accent">cat: essa-página: No such file or directory</p>
+      </div>
+
+      <p class="animate-fade-up mt-4 max-w-md text-[0.95rem] leading-relaxed text-ink/60 dark:text-fog/60 [animation-delay:180ms]">
+        Essa página não existe. This page doesn't exist.
+      </p>
+
+      <div class="animate-fade-up mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 [animation-delay:260ms]">
+        <a href="/" class="btn">Ir para o início</a>
+        <a href="/en/" class="link-arrow text-sm">
+          Back to home
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
+        </a>
+      </div>
+    </main>
+  </body>
+</html>
