@@ -2,6 +2,8 @@
 
 FROM node:26-alpine AS build
 WORKDIR /app
+ARG GIT_SHA=dev
+ENV VITE_GIT_SHA=$GIT_SHA
 COPY package.json pnpm-lock.yaml ./
 RUN npm install -g pnpm && pnpm install --frozen-lockfile
 COPY . .
