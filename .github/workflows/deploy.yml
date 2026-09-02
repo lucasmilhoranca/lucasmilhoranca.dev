@@ -46,6 +46,10 @@ jobs:
   deploy:
     needs: build
     runs-on: self-hosted
+    env:
+      # k3s's kubectl defaults to /etc/rancher/k3s/k3s.yaml (root-owned)
+      # instead of the usual ~/.kube/config, so this must be explicit.
+      KUBECONFIG: /home/debian/.kube/config
     steps:
       - uses: actions/checkout@v4
 
