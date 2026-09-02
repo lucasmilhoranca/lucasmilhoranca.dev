@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lucasmilhoranca-dev
+  namespace: lucasmilhoranca-dev
+spec:
+  # NodePort on purpose, not an Ingress: your existing Nginx Proxy Manager
+  # container already owns host ports 80/443, and k3s's built-in Traefik
+  # would fight it for those same ports. NPM just forwards to this NodePort
+  # instead — see CLAUDE.md's Deploy section for the one-time Proxy Host setup.
+  type: NodePort
+  selector:
+    app: lucasmilhoranca-dev
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30080
