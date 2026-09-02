@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lucas Milhorança — Full Stack Developer</title>
+    <meta
+      name="description"
+      content="Lucas Milhorança, full stack developer focused on payment APIs, backend and architecture. PHP/Laravel, Node.js, React and AWS."
+    />
+    <meta name="theme-color" content="#0a0a09" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href="https://lucasmilhoranca.dev/en/" />
+    <link rel="alternate" hreflang="en" href="https://lucasmilhoranca.dev/en/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://lucasmilhoranca.dev/" />
+    <link rel="alternate" hreflang="x-default" href="https://lucasmilhoranca.dev/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Lucas Milhorança" />
+    <meta property="og:title" content="Lucas Milhorança — Full Stack Developer" />
+    <meta
+      property="og:description"
+      content="Payment APIs, backend and architecture. PHP/Laravel, Node.js, React and AWS."
+    />
+    <meta property="og:url" content="https://lucasmilhoranca.dev/en/" />
+    <meta property="og:image" content="https://lucasmilhoranca.dev/og-en.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Lucas Milhorança — Full Stack Developer" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Lucas Milhorança — Full Stack Developer" />
+    <meta
+      name="twitter:description"
+      content="Payment APIs, backend and architecture. PHP/Laravel, Node.js, React and AWS."
+    />
+    <meta name="twitter:image" content="https://lucasmilhoranca.dev/og-en.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Lucas Milhorança Pinto da Silva",
+        "alternateName": "Lucas Milhorança",
+        "url": "https://lucasmilhoranca.dev/en/",
+        "jobTitle": "Full Stack Developer",
+        "email": "mailto:contact@lucasmilhoranca.dev",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "iPag Pagamentos Digitais"
+        },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Universidade do Oeste Paulista (UNOESTE)"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Presidente Prudente",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        },
+        "sameAs": [
+          "https://github.com/lucasmilhoranca",
+          "https://www.linkedin.com/in/lucas-milhoranca"
+        ],
+        "knowsAbout": [
+          "PHP",
+          "Laravel",
+          "Node.js",
+          "React",
+          "Java",
+          "C#",
+          "AWS",
+          "MySQL",
+          "PostgreSQL",
+          "Docker",
+          "Kubernetes",
+          "Clean Architecture"
+        ]
+      }
+    </script>
+
+    <link rel="stylesheet" href="/src/style.css" />
+
+    <script>
+      ;(function () {
+        if (localStorage.getItem('theme') !== 'light') {
+          document.documentElement.classList.add('dark')
+        }
+      })()
+    </script>
+  </head>
+  <body class="bg-cream text-ink selection:bg-accent selection:text-cream dark:bg-void dark:text-fog">
+    <header
+      class="sticky top-0 z-10 border-b border-ink/5 bg-cream/80 backdrop-blur dark:border-fog/5 dark:bg-void/80"
+    >
+      <div class="mx-auto flex h-14 max-w-3xl items-center justify-between px-5 sm:px-6">
+        <a href="#top" class="text-sm font-semibold tracking-tight">
+          lucasmilhoranca<span class="text-accent">.</span>dev
+        </a>
+        <div class="flex items-center gap-5">
+          <nav aria-label="Sections" class="hidden items-center gap-4 text-xs text-ink/60 dark:text-fog/60 sm:flex">
+            <a href="#experience" class="transition-colors hover:text-accent">Experience</a>
+            <a href="#stack" class="transition-colors hover:text-accent">Skills</a>
+            <a href="#contact" class="transition-colors hover:text-accent">Contact</a>
+          </nav>
+          <nav aria-label="Language" class="flex items-center gap-1 text-xs">
+            <a href="/" class="rounded px-1.5 py-0.5 text-ink/60 hover:text-accent dark:text-fog/60">PT</a>
+            <span class="text-ink/20 dark:text-fog/20">/</span>
+            <span class="rounded px-1.5 py-0.5 text-ink dark:text-fog">EN</span>
+          </nav>
+          <button
+            id="theme-toggle"
+            type="button"
+            aria-label="Toggle theme"
+            aria-pressed="false"
+            class="grid h-7 w-7 place-items-center rounded-full border border-ink/10 transition-colors hover:border-accent hover:text-accent dark:border-fog/10"
+          >
+            <svg class="h-3.5 w-3.5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" />
+            </svg>
+            <svg class="hidden h-3.5 w-3.5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+            </svg>
+          </button>
+          <button
+            id="menu-toggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            class="grid h-7 w-7 place-items-center rounded-full border border-ink/10 transition-colors hover:border-accent hover:text-accent dark:border-fog/10 sm:hidden"
+          >
+            <svg id="menu-icon-open" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" />
+            </svg>
+            <svg id="menu-icon-close" class="hidden h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6 6 18" /><path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav
+        id="mobile-menu"
+        aria-label="Sections"
+        class="hidden border-t border-ink/5 px-5 py-2 text-sm sm:hidden dark:border-fog/5"
+      >
+        <a href="#experience" class="block py-2.5 text-ink/70 transition-colors hover:text-accent dark:text-fog/70">Experience</a>
+        <a href="#stack" class="block py-2.5 text-ink/70 transition-colors hover:text-accent dark:text-fog/70">Skills</a>
+        <a href="#contact" class="block py-2.5 text-ink/70 transition-colors hover:text-accent dark:text-fog/70">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- Hero -->
+      <section class="mx-auto max-w-3xl px-5 pb-20 pt-16 sm:px-6 sm:pb-28 sm:pt-24">
+        <p class="animate-fade-up text-xs uppercase tracking-[0.25em] text-accent">Full Stack Developer</p>
+        <h1 class="animate-fade-up mt-3 text-4xl font-bold tracking-tight sm:text-5xl [animation-delay:80ms]">
+          Lucas Milhorança
+        </h1>
+        <p class="animate-fade-up mt-4 max-w-md text-lg leading-relaxed text-ink/70 dark:text-fog/70 [animation-delay:140ms]">
+          I like understanding the problem before solving it, taking on what's genuinely hard, and
+          helping whoever's learning along the way<span class="cursor"></span>
+        </p>
+        <span class="animate-fade-up mt-6 inline-flex items-center gap-2 rounded-full border border-ink/10 px-3 py-1 text-xs text-ink/60 dark:border-fog/10 dark:text-fog/60 [animation-delay:200ms]">
+          <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+          Available for new projects
+        </span>
+        <div class="animate-fade-up mt-6 flex flex-wrap items-center gap-x-4 gap-y-3 [animation-delay:260ms]">
+          <a href="mailto:contact@lucasmilhoranca.dev" class="btn">Contact</a>
+          <div class="flex items-center gap-x-4">
+            <a href="https://github.com/lucasmilhoranca" target="_blank" rel="noreferrer" class="link-arrow text-sm">
+              GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/lucas-milhoranca" target="_blank" rel="noreferrer" class="link-arrow text-sm">
+              LinkedIn
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
+            </a>
+          </div>
+        </div>
+        <p class="animate-fade-up mt-8 text-xs text-ink/60 dark:text-fog/60 [animation-delay:320ms]">
+          Presidente Prudente, SP — Brazil
+        </p>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" class="border-t border-ink/10 dark:border-fog/10">
+        <div class="mx-auto max-w-3xl px-5 py-14 sm:px-6 sm:py-20">
+          <h2 class="label">— Experience</h2>
+
+          <ol class="mt-8 space-y-10">
+            <li>
+              <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                <h3 class="font-semibold">
+                  Mid-level Full Stack Developer
+                  <span class="font-normal text-ink/60 dark:text-fog/60">· iPag Pagamentos Digitais</span>
+                </h3>
+                <span class="whitespace-nowrap text-xs tabular-nums text-ink/60 dark:text-fog/60">04/2025 — present</span>
+              </div>
+              <ul class="mt-3 space-y-1.5 text-sm leading-relaxed text-ink/70 dark:text-fog/70">
+                <li class="bullet">Led the new end-to-end checkout (Laravel API + React frontend), enabling new acquirer partnerships.</li>
+                <li class="bullet">Optimized the batch transaction processing API, cutting average time from 30s to 2s by tuning MySQL indexes.</li>
+                <li class="bullet">Fixed slow queries in internal reports, bringing response times down from ~20s to under 1s.</li>
+                <li class="bullet">Led a rewrite of the card vault with envelope encryption and shipped a PIX integration with Santander, cutting operational fees by ~84%.</li>
+                <li class="bullet">Shipped same-day (D0) PIX settlement, moving up payments that used to take up to D+2.</li>
+                <li class="bullet">Integrated an external MPI provider for 3DS authentication on card transactions.</li>
+                <li class="bullet">Built EDI file ingestion for sales and transaction reconciliation.</li>
+              </ul>
+            </li>
+
+            <li>
+              <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                <h3 class="font-semibold">
+                  Full Stack Developer Intern
+                  <span class="font-normal text-ink/60 dark:text-fog/60">· Nimbus Sistemas</span>
+                </h3>
+                <span class="whitespace-nowrap text-xs tabular-nums text-ink/60 dark:text-fog/60">01/2025 — 12/2025</span>
+              </div>
+              <ul class="mt-3 space-y-1.5 text-sm leading-relaxed text-ink/70 dark:text-fog/70">
+                <li class="bullet">Built a PIX payments microservice (Node.js/Fastify + PostgreSQL) integrated with C# and Node.js products.</li>
+                <li class="bullet">Developed the Payment Methods and Default Payments modules of the Nimbus Cloud ERP, using Clean Architecture, NestJS and a React/Next.js frontend.</li>
+              </ul>
+            </li>
+
+            <li>
+              <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                <h3 class="font-semibold">
+                  IT Assistant — Apprentice
+                  <span class="font-normal text-ink/60 dark:text-fog/60">· Gasparim</span>
+                </h3>
+                <span class="whitespace-nowrap text-xs tabular-nums text-ink/60 dark:text-fog/60">10/2022 — 01/2025</span>
+              </div>
+              <ul class="mt-3 space-y-1.5 text-sm leading-relaxed text-ink/70 dark:text-fog/70">
+                <li class="bullet">Rolled out the Protheus ERP across the Seeds and Animal Nutrition units, configuring modules and designing reports.</li>
+                <li class="bullet">Built a gate/vehicle control system (Node.js/Express, MongoDB, Redis, React/Vite) for company properties.</li>
+              </ul>
+            </li>
+          </ol>
+
+          <p class="mt-10 text-sm text-ink/60 dark:text-fog/60">
+            B.Sc. in Information Systems — Universidade do Oeste Paulista (UNOESTE), 2022–2026.
+          </p>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="stack" class="border-t border-ink/10 dark:border-fog/10">
+        <div class="mx-auto max-w-3xl px-5 py-14 sm:px-6 sm:py-20">
+          <h2 class="label">— Stack</h2>
+          <ul class="mt-6 flex flex-wrap gap-2">
+            <li class="pill">TypeScript</li>
+            <li class="pill">JavaScript</li>
+            <li class="pill">PHP</li>
+            <li class="pill">Laravel</li>
+            <li class="pill">Node.js</li>
+            <li class="pill">NestJS</li>
+            <li class="pill">Fastify</li>
+            <li class="pill">Express</li>
+            <li class="pill">React</li>
+            <li class="pill">Next.js</li>
+            <li class="pill">Vite</li>
+            <li class="pill">Java</li>
+            <li class="pill">Spring Boot</li>
+            <li class="pill">C#</li>
+            <li class="pill">.NET</li>
+            <li class="pill">MySQL</li>
+            <li class="pill">PostgreSQL</li>
+            <li class="pill">MongoDB</li>
+            <li class="pill">Redis</li>
+            <li class="pill">RabbitMQ</li>
+            <li class="pill">AWS</li>
+            <li class="pill">AWS KMS</li>
+            <li class="pill">EC2 / S3</li>
+            <li class="pill">Oracle Cloud</li>
+            <li class="pill">Docker</li>
+            <li class="pill">Kubernetes</li>
+            <li class="pill">GitHub Actions</li>
+            <li class="pill">Git</li>
+            <li class="pill">Clean Architecture</li>
+            <li class="pill">DDD</li>
+            <li class="pill">TailwindCSS</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="border-t border-ink/10 dark:border-fog/10">
+        <div class="mx-auto max-w-3xl px-5 py-16 sm:px-6 sm:py-24">
+          <h2 class="label">— Contact</h2>
+          <p class="mt-6 max-w-sm text-ink/70 dark:text-fog/70">
+            If you've got a project to build or a role to fill, reach out.
+          </p>
+          <a
+            href="mailto:contact@lucasmilhoranca.dev"
+            class="mt-4 inline-flex items-start gap-2 break-all text-lg font-semibold leading-snug tracking-tight transition-colors hover:text-accent sm:items-center sm:gap-2.5 sm:text-2xl sm:leading-normal md:text-3xl"
+          >
+            <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent sm:mt-0 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" /></svg>
+            contact@lucasmilhoranca.dev
+          </a>
+          <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+            <a href="https://github.com/lucasmilhoranca" target="_blank" rel="noreferrer" class="link-arrow">
+              GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/lucas-milhoranca" target="_blank" rel="noreferrer" class="link-arrow">
+              LinkedIn
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="mx-auto flex max-w-3xl items-center justify-between px-5 pb-10 text-xs text-ink/60 sm:px-6 dark:text-fog/60">
+      <span>© <span id="year"></span> Lucas Milhorança</span>
+      <a href="#top" class="inline-flex items-center gap-1 hover:text-accent">
+        <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></svg>
+        top
+      </a>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
