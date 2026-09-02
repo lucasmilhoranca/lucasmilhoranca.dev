@@ -48,6 +48,16 @@ Project-scoped Claude Code skills live in `.claude/skills/`, pulled in because n
 - `doc-coauthoring` — closest official skill to copywriting help; used loosely, not its full multi-stage workflow.
 - `seo-schema` — from `seranking/seo-skills`; only its no-API "generate schema" mode is used (the rest needs a paid SE Ranking/Firecrawl account).
 
+## Deploy
+
+Builds to a Docker image (`Dockerfile`: Vite build → static files served by nginx) and runs on a personal k3s cluster.
+
+- `.github/workflows/deploy.yml` triggers on push to `release/production` only — never add `pull_request` to it (see the comment in the file for why: this uses a self-hosted runner).
+- `build` job (GitHub-hosted): builds and pushes the image to `ghcr.io/lucasmilhoranca/lucasmilhoranca.dev`.
+- `deploy` job (self-hosted runner on the VPS): `kubectl apply -f k8s/` then rolls the new image out.
+- `k8s/`: `Namespace` + `Deployment` + `NodePort` Service (port 30080). No Ingress — Nginx Proxy Manager (already running in Docker on the VPS) owns ports 80/443 and forwards to the NodePort; k3s's built-in Traefik would otherwise fight NPM for those same ports.
+- No GitHub Secrets are needed for this workflow — the deploy runs on the owner's own machine.
+
 ## Git
 
 - Never add a `Co-Authored-By: Claude` line (or any AI-attribution line) to commit messages or pull request descriptions.
