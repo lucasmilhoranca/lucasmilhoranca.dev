@@ -51,14 +51,14 @@ Project-scoped Claude Code skills live in `.claude/skills/`, pulled in because n
 
 ## Deploy
 
-Builds to a Docker image (`Dockerfile`: Vite build → static files served by nginx) and runs on a personal k3s cluster.
+Builds to a Docker image (`Dockerfile`: Vite build → static files served by nginx) and runs as a plain Docker container on a personal VPS via `docker-compose.yml`.
 
 - `.github/workflows/deploy.yml` triggers on push to `release/production` only — never add `pull_request` to it (see the comment in the file for why: this uses a self-hosted runner).
 - `build` job (GitHub-hosted): builds and pushes the image to `ghcr.io/lucasmilhoranca/lucasmilhoranca.dev`.
-- `deploy` job (self-hosted runner on the VPS): `kubectl apply -f k8s/` then rolls the new image out.
-- `k8s/`: `Namespace` + `Deployment` + `NodePort` Service (port 30080). No Ingress — Nginx Proxy Manager (already running in Docker on the VPS) owns ports 80/443 and forwards to the NodePort; k3s's built-in Traefik would otherwise fight NPM for those same ports.
+- `deploy` job (self-hosted runner on the VPS): `docker compose pull && docker compose up -d --force-recreate`.
+- `docker-compose.yml`: no host port published. The container joins the `proxynpm` Docker network that Nginx Proxy Manager already uses (same pattern as the existing Portainer setup) — NPM forwards to it by container name (`lucasmilhoranca-dev`, port 80), not by IP/port.
 - No GitHub Secrets are needed for this workflow — the deploy runs on the owner's own machine.
-- **k3s quirk**: its `kubectl` defaults to `/etc/rancher/k3s/k3s.yaml` (root-owned) instead of the usual `~/.kube/config`. The `deploy` job sets `KUBECONFIG` explicitly to a copy at `/home/debian/.kube/config` (`sudo k3s kubectl config view --raw > ~/.kube/config`) — don't assume plain `kubectl` picks up the right config on this runner without it.
+- **Not on Kubernetes.** A k3s + Traefik + NodePort setup was tried first but Traefik ended up intercepting traffic meant for Nginx Proxy Manager on the VPS, breaking access to NPM/Portainer. Reverted to plain Docker to unblock; k3s may be reintroduced later, more carefully (e.g. Traefik disabled or moved off host ports 80/443 entirely before anything else touches them).
 
 ## Git
 

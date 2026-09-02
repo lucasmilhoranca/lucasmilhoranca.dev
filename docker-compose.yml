@@ -1,0 +1,14 @@
+services:
+  web:
+    image: ghcr.io/lucasmilhoranca/lucasmilhoranca.dev:latest
+    container_name: lucasmilhoranca-dev
+    restart: unless-stopped
+    networks:
+      - proxynpm
+
+# Reuses the network your Nginx Proxy Manager stack already created — no
+# host port is published. Point a Proxy Host at it the same way you already
+# do for Portainer: Forward Hostname/IP = "lucasmilhoranca-dev", Port = 80.
+networks:
+  proxynpm:
+    external: true

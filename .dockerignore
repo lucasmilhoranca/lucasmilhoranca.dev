@@ -3,8 +3,8 @@ dist
 .git
 .github
 .claude
-k8s
 *.md
 Dockerfile
+docker-compose.yml
 .dockerignore
 .gitignore
