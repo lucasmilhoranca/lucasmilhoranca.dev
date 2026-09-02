@@ -58,6 +58,7 @@ Builds to a Docker image (`Dockerfile`: Vite build → static files served by ng
 - `deploy` job (self-hosted runner on the VPS): `docker compose pull && docker compose up -d --force-recreate`.
 - `docker-compose.yml`: no host port published. The container joins the `proxynpm` Docker network that Nginx Proxy Manager already uses (same pattern as the existing Portainer setup) — NPM forwards to it by container name (`lucasmilhoranca-dev`, port 80), not by IP/port.
 - No GitHub Secrets are needed for this workflow — the deploy runs on the owner's own machine.
+- **Verifying a deploy actually landed**: each page has `<!-- build %VITE_GIT_SHA% --></body>` — Vite's built-in HTML env replacement swaps `%VITE_GIT_SHA%` for the `VITE_GIT_SHA` env var at build time. The Dockerfile takes it as `ARG GIT_SHA` (passed by the workflow as `build-args: GIT_SHA=${{ github.sha }}`) and re-exports it as `ENV VITE_GIT_SHA`. View-source on the live page to see which commit is actually deployed. Also works as a plain `curl -I` check: the `last-modified` header changes on every deploy too.
 - **Not on Kubernetes.** A k3s + Traefik + NodePort setup was tried first but Traefik ended up intercepting traffic meant for Nginx Proxy Manager on the VPS, breaking access to NPM/Portainer. Reverted to plain Docker to unblock; k3s may be reintroduced later, more carefully (e.g. Traefik disabled or moved off host ports 80/443 entirely before anything else touches them).
 
 ## Git
