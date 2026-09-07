@@ -55,3 +55,72 @@ jobs:
         run: |
           docker compose pull
           docker compose up -d --force-recreate
+
+  notify:
+    needs: [build, deploy]
+    if: always()
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Notify Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          APP: lucasmilhoranca.dev
+          SITE: https://lucasmilhoranca.dev
+          BUILD_RESULT: ${{ needs.build.result }}
+          DEPLOY_RESULT: ${{ needs.deploy.result }}
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+          SHA: ${{ github.sha }}
+          ACTOR: ${{ github.actor }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          COMMIT_URL: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "DISCORD_WEBHOOK_URL is not set — skipping Discord notification."
+            exit 0
+          fi
+
+          if [ "$DEPLOY_RESULT" = "success" ]; then
+            TITLE="✅ $APP deployed to production"
+            COLOR=3066993   # green
+          elif [ "$BUILD_RESULT" != "success" ]; then
+            TITLE="❌ $APP build failed — nothing deployed"
+            COLOR=15158332  # red
+          else
+            TITLE="❌ $APP deploy failed — image built, container not updated"
+            COLOR=15158332  # red
+          fi
+
+          SUMMARY=$(printf '%s' "$COMMIT_MSG" | head -n 1)
+          SHORT_SHA=$(printf '%s' "$SHA" | cut -c1-7)
+
+          jq -n \
+            --arg title "$TITLE" \
+            --argjson color "$COLOR" \
+            --arg site "$SITE" \
+            --arg summary "$SUMMARY" \
+            --arg sha "$SHORT_SHA" \
+            --arg actor "$ACTOR" \
+            --arg run_url "$RUN_URL" \
+            --arg commit_url "$COMMIT_URL" \
+            --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            '{
+              username: "Deploy",
+              embeds: [{
+                title: $title,
+                url: $site,
+                color: $color,
+                description: ("[`" + $sha + "`](" + $commit_url + ") " + $summary),
+                fields: [
+                  { name: "Author", value: $actor, inline: true },
+                  { name: "Workflow", value: ("[run log](" + $run_url + ")"), inline: true }
+                ],
+                timestamp: $ts
+              }]
+            }' > payload.json
+
+          curl -sS --fail-with-body \
+            -X POST \
+            -H 'Content-Type: application/json' \
+            --data @payload.json \
+            "$DISCORD_WEBHOOK_URL"
