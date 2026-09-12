@@ -49,6 +49,18 @@ Project-scoped Claude Code skills live in `.claude/skills/`, pulled in because n
 - `doc-coauthoring` — closest official skill to copywriting help; used loosely, not its full multi-stage workflow.
 - `seo-schema` — from `seranking/seo-skills`; only its no-API "generate schema" mode is used (the rest needs a paid SE Ranking/Firecrawl account).
 
+## Security headers
+
+Served by the container's own nginx (`nginx.conf` + `security-headers.conf`), not by Cloudflare or Nginx Proxy Manager — so the headers travel with the image and are versioned here.
+
+- `security-headers.conf` holds the static ones (HSTS, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Cross-Origin-Opener-Policy`, `Permissions-Policy`) and ends by including the generated CSP.
+- **`add_header` does not inherit in nginx** — a `location` that sets any header of its own loses every header from the `server` block. That's why the asset `location` in `nginx.conf` includes `security-headers.conf` again. Any new `location` with an `add_header` needs the same include.
+- **CSP is generated at build time** by `scripts/csp.mjs`, which hashes every inline `<script>` in `dist/` (the theme script and the JSON-LD blocks) into `sha256-` sources. This keeps the policy strict — no `'unsafe-inline'` — and means editing inline scripts or JSON-LD never breaks the site: the hashes are recomputed on every `pnpm build`. Output is `csp.conf` (gitignored); the Dockerfile copies it from the build stage into `/etc/nginx/snippets/`.
+- Everything the site loads is same-origin (self-hosted fonts, no CDN, no analytics), so the policy is `default-src 'self'`. Adding any third-party resource means widening it.
+- HSTS is `max-age=31536000` with **no `includeSubDomains` and no `preload`** on purpose — `includeSubDomains` would force HTTPS in browsers for every `*.lucasmilhoranca.dev` on the VPS, and `preload` is effectively irreversible. HSTS is browser-only and HTTP-only: it has no effect on SSH, `psql`, `redis-cli`, port forwarding, or access by raw IP.
+- Nginx Proxy Manager also injects headers (`x-served-by`, and historically `x-frame-options`/`x-content-type-options`/`referrer-policy`/`x-xss-protection`). The values here mirror NPM's so a duplicate is harmless; if `curl -sI https://lucasmilhoranca.dev` shows any header twice, drop it from NPM's Advanced tab so there's one source of truth.
+- Check with `curl -sI https://lucasmilhoranca.dev/` or securityheaders.com.
+
 ## Deploy
 
 Builds to a Docker image (`Dockerfile`: Vite build → static files served by nginx) and runs as a plain Docker container on a personal VPS via `docker-compose.yml`.
