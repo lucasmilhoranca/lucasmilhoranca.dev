@@ -16,8 +16,8 @@ importers:
         version: 4.3.3
     devDependencies:
       lucide-static:
-        specifier: ^1.39.0
-        version: 1.39.0
+        specifier: ^1.47.0
+        version: 1.47.0
       typescript:
         specifier: ~7.0.2
         version: 7.0.2
@@ -536,8 +536,8 @@ packages:
     resolution: {integrity: sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==}
     engines: {node: '>= 12.0.0'}
 
-  lucide-static@1.39.0:
-    resolution: {integrity: sha512-TaDiwNFZ78c+HrZRNWHoR+LVkIOL8ebYOyNYvytdPkaLWE29G9umks6p1aeCE8kSEIoifnlNLPxMvvE3zqT/YA==}
+  lucide-static@1.47.0:
+    resolution: {integrity: sha512-yWIrkdXc688Feq5VjOktsKmV5Ikc7y5Nu3rrdtbr8nWjkJWk8QlnZfVtIak22Af+fNhZ7k4cTJpZo1zmj7X5sA==}
 
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
@@ -940,7 +940,7 @@ snapshots:
       lightningcss-win32-arm64-msvc: 1.33.0
       lightningcss-win32-x64-msvc: 1.33.0
 
-  lucide-static@1.39.0: {}
+  lucide-static@1.47.0: {}
 
   magic-string@0.30.21:
     dependencies:
